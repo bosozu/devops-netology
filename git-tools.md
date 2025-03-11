@@ -66,11 +66,19 @@ git blame ./provider_source.go | grep 'func providerSource'
 Ответ:
 
 ```output
-git log -G"globalPluginDirs\s*\(" --oneline
-7c4aeac5f3 stacks: load credentials from config file on startup (#35952)
-22a2580e93 main: Use the new cliconfig package credentials source
-35a058fb3d main: configure credentials from the CLI config file
-8364383c35 Push plugin discovery down into command package
+git grep --show-function "GlobalPluginDirs"
+git log -L :GlobalPluginDirs:internal/command/cliconfig/plugins.go 
+7c4aeac5f30aed09c5ef3198141b033eea9912be
+
 ```
 
 - Кто автор функции `synchronizedWriters`?
+
+Ответ:
+
+Первый коммит: 5ac311e2a9  
+Автор: Martin Atkins
+
+```git
+git log -S"func synchronizedWriters(" --pretty=format:'%h %an %ad %s'
+```
